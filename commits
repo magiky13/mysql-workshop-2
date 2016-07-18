@@ -1,25 +1,25 @@
-// e9
+// e11
 
-mysql> select count(*) from Account;                                                                                                                                                                  
+mysql> select count(*) from Entry where type = 'work' or type = 'home';
 +----------+
 | count(*) |
 +----------+
-|     1000 |
+|     2800 |
 +----------+
-1 row in set (0.04 sec)
+1 row in set (0.01 sec)
 
-mysql> select count(*) from AddressBook;
+mysql> select count(*) from Entry where type != 'other';
 +----------+
 | count(*) |
 +----------+
-|     1100 |
+|     2800 |
 +----------+
-1 row in set (0.00 sec)
+1 row in set (0.01 sec)
 
-mysql> select count(*) from Entry;
+mysql> select count(*) from Entry where subtype = 'phone';                                                                                                                                             
 +----------+
 | count(*) |
 +----------+
-|     4000 |
+|      600 |
 +----------+
 1 row in set (0.00 sec)
