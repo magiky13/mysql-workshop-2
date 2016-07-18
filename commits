@@ -1,37 +1,52 @@
-// e3
+// e4
+
+mysql> update Account set password=tba;
+ERROR 1054 (42S22): Unknown column 'tba' in 'field list'
+mysql> update Account set password='tba';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update AddressBook set name='tba';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Entry set birthday='tba';
+Query OK, 3 rows affected, 3 warnings (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 3
+
+mysql> describe Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | NO   |     | NULL    |                |
+| firstName        | varchar(255)                    | NO   |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthday         | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | NO   |     | NULL    |                |
+| subtype          | enum('phone','address','email') | NO   |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | NO   |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.00 sec)
 
 mysql> select * from Entry;
 +----+---------------+-----------+----------+---------------------+-------+---------+-------------------------+----------------+----------------------+-------------------------+-------------------+
 | id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne          | contentLineTwo | contentLineThree     | contentLineFour         | contentLineFive   |
 +----+---------------+-----------+----------+---------------------+-------+---------+-------------------------+----------------+----------------------+-------------------------+-------------------+
-|  1 |         22222 | Roland    | Carrot   | 1998-02-03 00:00:00 | home  | phone   | Arent we all lost?      | what is life   | i cant do it anymore | omg he slept on my desk | that guy is crazy |
-|  2 |     224545222 | Ralphd    | Alex     | 1998-02-03 00:00:00 | home  | phone   | Arent we all?           |  life          |  anymore             | omg he slepk            | crazy             |
-|  3 |     224545222 | Alphonse  | McTavish | 1998-03-03 00:00:00 | other | email   | Arent we allI like you? |  wefewflife    |  anwfefwefymore      | omg heededed slepk      | crazmamay         |
+|  1 |         22222 | Roland    | Carrot   | 0000-00-00 00:00:00 | home  | phone   | Arent we all lost?      | what is life   | i cant do it anymore | omg he slept on my desk | that guy is crazy |
+|  2 |     224545222 | Ralphd    | Alex     | 0000-00-00 00:00:00 | home  | phone   | Arent we all?           |  life          |  anymore             | omg he slepk            | crazy             |
+|  3 |     224545222 | Alphonse  | McTavish | 0000-00-00 00:00:00 | other | email   | Arent we allI like you? |  wefewflife    |  anwfefwefymore      | omg heededed slepk      | crazmamay         |
 +----+---------------+-----------+----------+---------------------+-------+---------+-------------------------+----------------+----------------------+-------------------------+-------------------+
 3 rows in set (0.00 sec)
-
-mysql> select * from Entry where id < 4;
-+----+---------------+-----------+----------+---------------------+-------+---------+-------------------------+----------------+----------------------+-------------------------+-------------------+
-| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne          | contentLineTwo | contentLineThree     | contentLineFour         | contentLineFive   |
-+----+---------------+-----------+----------+---------------------+-------+---------+-------------------------+----------------+----------------------+-------------------------+-------------------+
-|  1 |         22222 | Roland    | Carrot   | 1998-02-03 00:00:00 | home  | phone   | Arent we all lost?      | what is life   | i cant do it anymore | omg he slept on my desk | that guy is crazy |
-|  2 |     224545222 | Ralphd    | Alex     | 1998-02-03 00:00:00 | home  | phone   | Arent we all?           |  life          |  anymore             | omg he slepk            | crazy             |
-|  3 |     224545222 | Alphonse  | McTavish | 1998-03-03 00:00:00 | other | email   | Arent we allI like you? |  wefewflife    |  anwfefwefymore      | omg heededed slepk      | crazmamay         |
-+----+---------------+-----------+----------+---------------------+-------+---------+-------------------------+----------------+----------------------+-------------------------+-------------------+
-3 rows in set (0.00 sec)
-
-mysql> select * from AddressBook;
-+----+-----------+------------------+---------------------+---------------------+
-| id | accountId | name             | createdOn           | modifiedOn          |
-+----+-----------+------------------+---------------------+---------------------+
-|  1 |   2727272 | TimeTravalerRick | 1700-09-09 00:00:00 | 2016-09-09 00:00:00 |
-+----+-----------+------------------+---------------------+---------------------+
-1 row in set (0.00 sec)
 
 mysql> select * from Account;
 +----+------------------+----------+---------------------+---------------------+
 | id | email            | password | createdOn           | modifiedOn          |
 +----+------------------+----------+---------------------+---------------------+
-|  1 | mortar@gmail.com | kill     | 2016-01-01 00:00:00 | 2016-01-02 00:00:00 |
+|  1 | mortar@gmail.com | tba      | 2016-01-01 00:00:00 | 2016-01-02 00:00:00 |
 +----+------------------+----------+---------------------+---------------------+
 1 row in set (0.00 sec)
